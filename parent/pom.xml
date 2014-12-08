@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>test.spring</groupId>
+	<artifactId>parent</artifactId>
+	<version>1.0</version>
+	
+	<packaging>pom</packaging>
+    <name>All Spring Parent Project</name>
+	<url>http://justin01.wu</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.6</jdk.version>
+		<!--<spring.version>3.2.10.RELEASE</spring.version>-->
+		<spring.version>4.0.3.RELEASE</spring.version>
+		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<my.version>1.0</my.version>
+		<log4j.version>1.7.5</log4j.version>		
+	</properties>
+	
+	<developers>
+		<developer>
+			<id>Justin01_wu</id>
+			<name>Justin Wu</name>
+			<email>justin01.wu@gmail.com</email>
+		</developer>
+	</developers>
+	
+</project>
