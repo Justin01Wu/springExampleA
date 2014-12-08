@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test Spring security</title>
+</head>
+<body>
+
+<h1> This is a web app for Spring security testing</h1>
+
+<a href="admin"> protected web page (please use user1/123456 to login)</a>  
+
+<br/><br/>
+
+<h2>please enable SSL protocol on your web server before clicking above link</h2>
+
+the following is an example for tomcat in windows:
+<ul>
+	<li>have your JDK7 in your path</li>
+	<li>check file doesn't exist: C:\Users\[userName]\.keystore
+	<li>run this command: </li>
+	<li>keytool -genkeypair -keyalg RSA -alias selfsigned -validity 1080</li>
+	<li>change tomcat setting on $CATALINA_BASE/conf/server.xml:</li>
+	<li>search 'Define a SSL HTTP/1.1 Connector', and follow the description to set ssl to your newly created one</li>
+</ul>
+
+
+
+<h2>Created by Justin Wu</h2>
+
+</body>
+</html>
