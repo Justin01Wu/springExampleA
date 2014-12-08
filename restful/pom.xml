@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>test.spring</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0</version>
+		<relativePath>../parent/pom.xml</relativePath>
+	</parent>
+	
+	<artifactId>restful</artifactId>
+	<packaging>war</packaging>
+	<name>restful Webapp</name>	
+	
+	<properties>		
+		<jstl.version>1.2</jstl.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>		
+		
+		<!--  weird, without those 2  dependency, eclipse can pass UserValidatorTest, but maven will fail-->
+		<dependency>
+   			<groupId>javax.el</groupId>
+   			<artifactId>javax.el-api</artifactId>
+   			<version>2.2.4</version>
+   			<scope>test</scope>
+		</dependency>
+		<dependency>
+   			<groupId>org.glassfish.web</groupId>
+   			<artifactId>javax.el</artifactId>
+   			<version>2.2.4</version>
+   			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>test.spring</groupId>
+			<artifactId>beans</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<debug>true</debug>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+
+			<!-- disable integration test because it is not ready 
+		  	<plugin>
+		    	<groupId>org.apache.tomcat.maven</groupId>
+		    	<artifactId>tomcat7-maven-plugin</artifactId>
+		    	<version>2.2</version>
+		    	<configuration>
+		      		<port>9090</port>
+		      		<path>/restful</path>
+				</configuration>
+				
+				<executions>
+			      <execution>
+			        <id>tomcat-run</id>
+			        <goals>
+			          <goal>run-war-only</goal>
+			        </goals>
+			        <phase>pre-integration-test</phase>
+			        <configuration>
+			          <fork>true</fork>
+			        </configuration>
+			      </execution>
+			      <execution>
+			        <id>tomcat-shutdown</id>
+			        <goals>
+			          <goal>shutdown</goal>
+			        </goals>
+			        <phase>post-integration-test</phase>
+			      </execution>
+			    </executions>
+		  </plugin>
+		  -->
+
+		</plugins>
+		<finalName>${project.artifactId}</finalName>
+	</build>
+
+</project>

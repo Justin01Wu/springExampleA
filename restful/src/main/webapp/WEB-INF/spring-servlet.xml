@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"	  		
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	   		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+     		
+    		
+    <!-- Activates various annotations to be detected in bean classes -->
+	<context:annotation-config />
+	
+	<!-- Enable Annotation based Declarative Transaction Management -->
+    <tx:annotation-driven proxy-target-class="true"
+        transaction-manager="transactionManager" />
+ 
+    <!-- Creating TransactionManager Bean, since JDBC we are creating of type
+        DataSourceTransactionManager -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+        <!-- H2 in memory DB DataSource -->
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 
+        <property name="driverClassName" value="org.h2.Driver" />
+        <property name="url" value="jdbc:h2:mem:mytest" />
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+ 
+    <bean id="customerDAO" class="test.spring.service.CustomerDAOImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+ 
+    <bean id="customerManager" class="test.spring.service.CustomerManagerImpl">
+        <property name="customerDAO" ref="customerDAO"></property>
+    </bean>
+
+	<!-- Scans the classpath for annotated components that will be auto-registered 
+		as Spring beans. For example @Controller and @Service. Make sure to set the 
+		correct base-package -->
+
+	<context:component-scan base-package="test.spring" />
+
+	<!-- Configures the annotation-driven Spring MVC Controller programming 
+		model. Note that, with Spring 3.0, this tag works in Servlet MVC only! -->
+	<mvc:annotation-driven />
+
+	<mvc:resources mapping="/*.html" location="/*.html" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+		<!-- Declare a view resolver -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+    		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />	
+    
+    <bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter">
+    	<property name="baseAddress" value="http://localhost:8081/" />
+	</bean>
+	
+	<!-- declare service for client-->
+	<!-- 
+	<bean id="pService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean"
+		p:wsdlDocumentUrl="http://localhost:8081/myWebService?wsdl"
+		p:serviceName="myWebService"
+		p:serviceInterface="test.spring.service.MyWebService"
+		p:namespaceUri="http://spring.test/"/>
+	 -->
+    
+    <!-- equals to @Component on the class -->		
+    <!-- 
+    <bean id="personService22" class="test.spring.PersonServiceImpl" />	
+    -->
+
+</beans>

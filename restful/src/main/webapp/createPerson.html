@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="resources/bootstrap.css">
+<link rel="stylesheet" href="resources/login.css">
+<title>create a new person</title>
+</head>
+<body>
+
+<script type="text/x-handlebars">
+  <div id="loginContainer" class="tab-pane">
+    <form class="form-signin" {{action "createUser" on="submit"}}>
+      <h2>Create User</h2>
+
+     {{view Ember.TextField id="name" placeholder="Name" class="form-control" valueBinding="name"}}
+     <span class="text-danger">{{errors.name}}</span>
+
+     {{view Ember.TextField id="Password" class="form-control" placeholder="Password" valueBinding="password"}}
+     <span class="text-danger">{{errors.password}}</span>
+
+      <button class="btn btn-primary btn-block" type="submit">Create</button>
+
+    </form>
+  </div>
+</script>
+
+	<script src="resources/lib/jquery.1.10.2.min.js"></script>
+	<script src="resources/lib/handlebars-1.0.0.js"></script>
+	<script src="resources/lib/ember-1.2.0.js"></script>
+	<script src="resources/app.js"></script>
+
+</body>
+</html>
