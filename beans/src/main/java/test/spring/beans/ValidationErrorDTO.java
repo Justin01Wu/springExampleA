@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * validation result data transfer Object
+ */
+
 public class ValidationErrorDTO {
 
     private Map<String, List<String> > fieldErrors = new HashMap<String, List<String> >();
