@@ -11,4 +11,4 @@ you need :
 * Maven 3
 
 Then 
-    mvn clean install
+* mvn clean install
