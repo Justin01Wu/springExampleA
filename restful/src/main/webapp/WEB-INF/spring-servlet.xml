@@ -18,22 +18,11 @@
 	    		
     <!-- Activates various annotations to be detected in bean classes -->
 	<context:annotation-config />
-	
-	<!-- Enable Annotation based Declarative Transaction Management -->
-    <tx:annotation-driven proxy-target-class="true"
-        transaction-manager="transactionManager" />
- 
-    <!-- Creating TransactionManager Bean, since JDBC we are creating of type
-        DataSourceTransactionManager -->
-    <bean id="transactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
 
-	<!-- Scans the classpath for annotated components that will be auto-registered 
-		as Spring beans. For example @Controller and @Service. Make sure to set the 
-		correct base-package -->
-
+	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans. 
+		For example @Controller and @Service. 
+		Make sure to set the correct base-package 
+	-->
 	<context:component-scan base-package="test.spring" />
 
 	<!-- Configures the annotation-driven Spring MVC Controller programming 
