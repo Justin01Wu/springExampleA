@@ -13,7 +13,9 @@
 			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
      		
-    		
+    <!-- import spring.xml from another spring project --> 		
+	<import resource="classpath:spring.xml" />
+	    		
     <!-- Activates various annotations to be detected in bean classes -->
 	<context:annotation-config />
 	
@@ -26,33 +28,6 @@
     <bean id="transactionManager"
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
-    </bean>
-    
-    <!-- H2 in memory DB DataSource
-    <bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
- 
-        <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:mem:mytest" />
-        <property name="username" value="sa" />
-        <property name="password" value="" />
-    </bean>
- -->
-
-   <bean id="dataSource"
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver" />
-        <property name="url" value="jdbc:jtds:sqlserver://127.0.0.1/DataBaseName" />
-        <property name="username" value="sa" />
-        <property name="password" value="password" />
-   </bean>    
- 
-    <bean id="customerDAO" class="test.spring.service.CustomerDAOImpl">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
- 
-    <bean id="customerManager" class="test.spring.service.CustomerManagerImpl">
-        <property name="customerDAO" ref="customerDAO"></property>
     </bean>
 
 	<!-- Scans the classpath for annotated components that will be auto-registered 
