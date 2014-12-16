@@ -27,11 +27,6 @@ public class PersonRestfulTest  {
 	
 	private static final String ulrBase = "http://localhost:8080/restful/persons";
 	
-	@Test
-	public void testNothing() {
-	}
-	
-
 	private void verifyPerson(Person person) {
 		
 		HttpHeaders headers = new HttpHeaders();

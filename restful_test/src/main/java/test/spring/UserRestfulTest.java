@@ -16,11 +16,6 @@ import test.spring.beans.User;
 public class UserRestfulTest {
 	private static final String ulrBase = "http://localhost:8080/restful/users";
 
-	@Test
-	public void testNothing(){
-		
-	}
-	
 	private void verifyUser(User user) {
 		
 		HttpHeaders headers = new HttpHeaders();
