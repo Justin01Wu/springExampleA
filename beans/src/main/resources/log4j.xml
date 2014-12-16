@@ -11,10 +11,10 @@
 		</layout>
 	</appender>
 
-	<appender name="FILE" class="org.apache.log4j.FileAppender"> 
-		<param	name="File" value="beans.log" /> 
-		<param name="Append" value="true" /> 
-		<layout	class="org.apache.log4j.PatternLayout"> 
+	<appender name="FILE" class="org.apache.log4j.FileAppender">
+		<param	name="File" value="beans.log" />
+		<param name="Append" value="true" />
+		<layout	class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{ISO8601} %t %-5p: (%F:%L) - %m%n" /> 
 		</layout> 
 	</appender>
