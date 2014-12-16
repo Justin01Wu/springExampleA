@@ -24,7 +24,6 @@ public class Person {
 	@UserNameValidator
 	private String name;
 	
-	@JsonIgnore
 	private Date birth;	
 	
 	@PasswordValidator
@@ -54,6 +53,7 @@ public class Person {
 		this.name = name;
 	}
 
+	@JsonIgnore
 	public Date getBirth() {
 		return birth;
 	}
@@ -84,8 +84,7 @@ public class Person {
 	public void cleanUp() throws Exception {
 		System.out.println("");
 		System.out.println("     ==>  Spring Container is destroy! Person clean up");
-	}
-	
+	}	
 	
 
 }
