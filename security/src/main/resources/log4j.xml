@@ -7,7 +7,7 @@
 	<!-- Appenders -->
 	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{HH:mm:ss} %t %-5p (%F:%L) - %m%n" />
+			<param name="ConversionPattern" value="%d{ABSOLUTE} %-5p (%F:%L) - %m%n" />
 		</layout>
 	</appender>
 
@@ -15,7 +15,7 @@
 		<param name="File" value="security.log" />
 		<param name="Append" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{MM-dd HH:mm:ss.SSS} %t %-5p: (%F:%L) - %m%n" />
+			<param name="ConversionPattern" value="%d{ISO8601} %t %-5p: (%F:%L) - %m%n" />
 		</layout>
 	</appender>	
 	   
