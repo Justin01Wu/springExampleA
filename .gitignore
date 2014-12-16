@@ -1,6 +1,10 @@
+
+# eclipse Files #
 /RemoteSystemsTempFiles/
 /.metadata/
 .settings/
 .classpath
-target/
 .project
+
+# maven folder
+target/
