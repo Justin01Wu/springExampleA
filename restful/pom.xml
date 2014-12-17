@@ -44,6 +44,15 @@
 			<artifactId>beans</artifactId>
 			<version>1.0</version>
 		</dependency>
+
+		<!--  for DelegatingServletOutputStream in HttpLoggingFilter -->
+		<dependency>		
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
 		
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
@@ -66,7 +75,7 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
 	</dependencies>
 
 	<build>
