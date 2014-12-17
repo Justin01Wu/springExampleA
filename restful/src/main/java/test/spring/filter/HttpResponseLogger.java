@@ -51,10 +51,10 @@ public class HttpResponseLogger implements Filter {
 
 		System.out.println(logMessage);
 		
-		
-		HttpServletResponse httpResponse = (HttpServletResponse) response;
+		HttpServletResponse httpResponse = (HttpServletResponse) response;		
 		MyRequestWrapper responseWrapper = new MyRequestWrapper(httpResponse);
 		chain.doFilter(request, responseWrapper);
+		System.out.println(" \r\n  ==> RESPONSE STATUS: " + responseWrapper.getStatus());
 	}
 	
 	public static String getFullURL(HttpServletRequest request) {
@@ -92,6 +92,49 @@ public class HttpResponseLogger implements Filter {
 			//return new FileWriter("some file");
 			return new PrintWriter(System.out);			
 		}
+		
+		// retrieve http status in filter is a little trick, 
+		// the idea comes from 
+		//   http://stackoverflow.com/questions/1302072/how-can-i-get-the-http-status-code-out-of-a-servletresponse-in-a-servletfilter
+		private int httpStatus;
+	    @Override
+	    public void setStatus(int sc) {
+	        httpStatus = sc;
+	        super.setStatus(sc);
+	    }
+	    
+	    @Override
+	    public void sendError(int sc) throws IOException {
+	    	httpStatus = sc;
+	    	super.sendError(sc);
+	    }
+	    @Override
+	    public void sendError(int sc, String msg) throws IOException {
+	    	httpStatus = sc;
+	    	super.sendError(sc, msg);
+	    }
+	    
+	    @Override
+	    public void setStatus(int status, String string) {
+	        super.setStatus(status, string);
+	        this.httpStatus = status;
+	    }
+	    
+	    @Override
+	    public void reset() {
+	        super.reset();
+	        this.httpStatus = SC_OK;
+	    }
+
+	    @Override
+	    public void sendRedirect(String location) throws IOException {
+	        httpStatus = SC_MOVED_TEMPORARILY;
+	        super.sendRedirect(location);
+	    }
+	    
+	    public int getStatus() {
+	        return httpStatus;
+	    }
 
 	}
 
@@ -150,11 +193,13 @@ public class HttpResponseLogger implements Filter {
 			this.targetStream.write(arg0);
 		}
 
+		@Override
 		public void flush() throws IOException {
 			super.flush();
 			this.targetStream.flush();
 		}
 
+		@Override
 		public void close() throws IOException {
 			super.close();
 			this.targetStream.close();
