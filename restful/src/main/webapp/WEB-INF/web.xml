@@ -7,7 +7,17 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j
 
 	<display-name>spring restful testing</display-name>
 
-<!-- 
+	<filter>
+         <filter-name>HttpResponseLogger</filter-name>
+         <filter-class>test.spring.filter.HttpResponseLogger</filter-class>
+    </filter>
+    
+    <filter-mapping>
+         <filter-name>HttpResponseLogger</filter-name>
+         <url-pattern>/persons/*</url-pattern>
+    </filter-mapping>
+
+ <!-- 
 	<filter>
          <filter-name>ReqRespDumpFilter</filter-name>
          <filter-class>test.spring.ReqRespDumpFilter</filter-class>
@@ -17,7 +27,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j
          <filter-name>ReqRespDumpFilter</filter-name>
          <url-pattern>/persons/*</url-pattern>
     </filter-mapping>
- -->
+
  
  	<filter>
     	<filter-name>loggingFilter</filter-name>
@@ -28,7 +38,8 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j
     	<filter-name>loggingFilter</filter-name>
     	<url-pattern>/persons/*</url-pattern>
 	</filter-mapping>
- 
+  -->
+  
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<!--  servlet-name is 'spring' means DispatcherServlet will load WEB-INF/spring-servlet.xml  -->
