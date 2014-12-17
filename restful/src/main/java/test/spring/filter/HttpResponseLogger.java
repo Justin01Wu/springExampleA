@@ -52,7 +52,7 @@ public class HttpResponseLogger implements Filter {
 		System.out.println(logMessage);
 		
 		HttpServletResponse httpResponse = (HttpServletResponse) response;		
-		MyRequestWrapper responseWrapper = new MyRequestWrapper(httpResponse);
+		MyResponseWrapper responseWrapper = new MyResponseWrapper(httpResponse);
 		chain.doFilter(request, responseWrapper);
 		System.out.println(" \r\n  ==> RESPONSE STATUS: " + responseWrapper.getStatus());
 	}
@@ -68,9 +68,9 @@ public class HttpResponseLogger implements Filter {
 		}
 	}
 
-	class MyRequestWrapper extends HttpServletResponseWrapper {
+	class MyResponseWrapper extends HttpServletResponseWrapper {
 
-		public MyRequestWrapper(HttpServletResponse response) {
+		public MyResponseWrapper(HttpServletResponse response) {
 			super(response);
 		}
 
