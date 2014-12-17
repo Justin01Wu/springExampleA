@@ -2,7 +2,6 @@ package test.spring.filter;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Locale;
@@ -17,8 +16,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
-
-import org.apache.commons.io.output.TeeOutputStream;
 
 /**
  * it comes from
@@ -178,98 +175,6 @@ public class HttpResponseLogger implements Filter {
 			return this;
 		}
 	}
-	
-	
-	public class TeeServletOutputStream extends ServletOutputStream {
-
-		private final TeeOutputStream targetStream;
-
-		public TeeServletOutputStream(OutputStream one, OutputStream two) {
-			targetStream = new TeeOutputStream(one, two);
-		}
-
-		@Override
-		public void write(int arg0) throws IOException {
-			this.targetStream.write(arg0);
-		}
-
-		@Override
-		public void flush() throws IOException {
-			super.flush();
-			this.targetStream.flush();
-		}
-
-		@Override
-		public void close() throws IOException {
-			super.close();
-			this.targetStream.close();
-		}
-	}
-
-	/** The TeeOutputStream is similar, but it has no backing writer of itself so you'll need to redirect each call to both output streams: 
-	 * 
-	 * @author justin.wu
-	 * @deprecated, it is replaced with TeeServletOutputStream because it used Apache TeeOutputStream, reduce the code 
-	 *
-	 */
-	@Deprecated
-	class MyTeeOutputStream extends ServletOutputStream {
-		private ServletOutputStream output1;
-		private PrintStream output2;
-
-		/**
-		 * @deprecated, it is replaced with TeeServletOutputStream because it used Apache TeeOutputStream, reduce the code
-		 */
-		@Deprecated
-		public MyTeeOutputStream(ServletOutputStream output1, OutputStream output2) {
-			this.output1 = output1;
-			this.output2 = new PrintStream(output2);
-		}
-
-		@Override
-		public void write(int b) throws IOException {
-			output1.write(b);
-			output2.write(b);
-		}
-		
-		@Override
-		public void print(char c) throws IOException {
-			output1.print(c);
-			output2.print(c);
-		}
-		
-		@Override
-		public void print(String c) throws IOException {
-			output1.print(c);
-			output2.print(c);
-		}
-		
-		@Override
-		public void print(boolean c) throws IOException {
-			output1.print(c);
-			output2.print(c);
-		}
-		
-		@Override
-		public void println() throws IOException{
-			output1.println();
-			output2.println();
-		}
-		
-		@Override
-		public void println(String c) throws IOException{
-			output1.println(c);
-			output2.println(c);
-		}
-		
-		@Override
-		public void println(char c) throws IOException{
-			output1.println(c);
-			output2.println(c);
-		}
-
-	}
-	
 	
 	
 }
