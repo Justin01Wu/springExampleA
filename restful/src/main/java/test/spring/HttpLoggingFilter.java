@@ -20,6 +20,10 @@ import org.springframework.web.filter.GenericFilterBean;
  * it comes from :
  * http://stackoverflow.com/questions/2158647/logging-response-body-html-from-httpservletresponse-using-spring-mvc-handlerin
  * 
+ *  dump ServletRequest and ServletResponse body into log
+ * ServletResponse and ServletRequest can not be relocated its position, so this code will use TeeOutputStream to fork it
+ * 
+ * the performance is low, so please set url-pattern in web.xml carefully only to those URLs we care 
  * @author justin.wu
  *
  */

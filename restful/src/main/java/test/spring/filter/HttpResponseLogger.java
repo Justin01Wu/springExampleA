@@ -24,7 +24,7 @@ import org.apache.commons.io.output.TeeOutputStream;
  * it comes from
  * http://www.coderanch.com/t/458391/java-io/java/HttpServletResponse-Output-Stream
  * 
- * dump ServletRequest and ServletResponse bodyinto log
+ * dump ServletRequest and ServletResponse body into log
  * ServletResponse and ServletRequest can not be relocated its position, so this code will use TeeOutputStream to fork it
  * 
  * the performance is low, so please set url-pattern in web.xml carefully only to those URLs we care 
@@ -75,8 +75,8 @@ public class HttpResponseLogger implements Filter {
 		}
 
 		public ServletOutputStream getOutputStream() throws IOException {
-			return new MyTeeOutputStream(super.getOutputStream(), loggingOutputStream());
-			//return new TeeServletOutputStream(super.getOutputStream(), loggingOutputStream());
+			//return new MyTeeOutputStream(super.getOutputStream(), loggingOutputStream());
+			return new TeeServletOutputStream(super.getOutputStream(), loggingOutputStream());
 		}
 
 		public PrintWriter getWriter() throws IOException {
