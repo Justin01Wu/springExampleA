@@ -1,5 +1,8 @@
 package test.spring;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,6 +10,7 @@ import java.sql.Statement;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -97,7 +101,25 @@ public class TransactionManagerTest {
         customerManager.createCustomer(cust);
  
         ctx.close();
+	}
+	
+	@Test
+	public void testCopy() {
 
+        Address address = createDummyAddress(3);
+        Customer cust = createDummyCustomer(address, 3);
+ 
+        Customer cust2 =  new Customer();
+        BeanUtils.copyProperties(cust, cust2);
+        
+		
+		assertEquals(cust2.getName(), cust.getName());
+		assertEquals(cust2.getAddress().getAddress(), cust2.getAddress().getAddress());
+		assertEquals(cust2.getAddress().getCountry(), cust2.getAddress().getCountry());		
+		
+		assertTrue(cust2.getAddress() == cust2.getAddress());		
+		//BeanUtils.copyProperties is kind of shallow copy, it copy the reference of object tree
+		
         
 	}
 
