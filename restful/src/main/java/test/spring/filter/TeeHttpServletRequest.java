@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * http://logback.qos.ch/xref/ch/qos/logback/access/servlet/TeeHttpServletRequest.html 
  *
  */
-public class TeeHttpServletRequest extends HttpServletRequestWrapper {
+class TeeHttpServletRequest extends HttpServletRequestWrapper {
 
 	public static final String LB_INPUT_BUFFER = "LB_INPUT_BUFFER";
 	public static final String X_WWW_FORM_URLECODED = "application/x-www-form-urlencoded";
 
 	private TeeServletInputStream inStream;
 	private BufferedReader reader;
-	boolean postedParametersMode = false;
+	private boolean postedParametersMode = false;
 
-	public static boolean isFormUrlEncoded(HttpServletRequest request) {
+	private static boolean isFormUrlEncoded(HttpServletRequest request) {
 
 		if ("POST".equals(request.getMethod()) && X_WWW_FORM_URLECODED.equals(request.getContentType())) {
 			return true;

@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
    http://logback.qos.ch/xref/ch/qos/logback/access/servlet/TeeServletInputStream.html
  *
  */
-public class TeeServletInputStream extends ServletInputStream {
+class TeeServletInputStream extends ServletInputStream {
 
-	InputStream in;
-	byte[] inputBuffer;
+	private InputStream in;
+	private byte[] inputBuffer;
 
 	TeeServletInputStream(HttpServletRequest request) {
 		duplicateInputStream(request);
@@ -40,7 +40,7 @@ public class TeeServletInputStream extends ServletInputStream {
 		}
 	}
 
-	byte[] consumeBufferAndReturnAsByteArray(InputStream is) throws IOException {
+	private byte[] consumeBufferAndReturnAsByteArray(InputStream is) throws IOException {
 		int len = 1024;
 		byte[] temp = new byte[len];
 		int c = -1;
@@ -51,7 +51,7 @@ public class TeeServletInputStream extends ServletInputStream {
 		return baos.toByteArray();
 	}
 
-	void closeStrean(ServletInputStream is) {
+	private void closeStrean(ServletInputStream is) {
 		if (is != null) {
 			try {
 				is.close();
