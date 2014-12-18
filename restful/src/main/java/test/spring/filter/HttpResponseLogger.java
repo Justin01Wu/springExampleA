@@ -33,6 +33,11 @@ public class HttpResponseLogger implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
+		if(!(request instanceof HttpServletRequest)){
+			// not http request, so quit;
+			chain.doFilter(request, response);
+			return;
+		}
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		
 		final StringBuilder logMessage = new StringBuilder("   ===>> HTTP Request - ");
@@ -44,7 +49,13 @@ public class HttpResponseLogger implements Filter {
 		
 		HttpServletResponse httpResponse = (HttpServletResponse) response;		
 		MyResponseWrapper responseWrapper = new MyResponseWrapper(httpResponse);
-		chain.doFilter(request, responseWrapper);
+		
+		TeeHttpServletRequest requestWrapper =  new TeeHttpServletRequest(httpRequest);
+		chain.doFilter(requestWrapper, responseWrapper);
+		Object x = requestWrapper.getAttribute(TeeHttpServletRequest.LB_INPUT_BUFFER);
+		if(x instanceof byte[]){
+			System.out.println(" \r\n  ==> REQUEST body: " + new String((byte[])x));
+		}
 		System.out.println(" \r\n  ==> RESPONSE STATUS: " + responseWrapper.getStatus());
 	}
 	
