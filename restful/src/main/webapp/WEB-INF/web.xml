@@ -8,12 +8,12 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j
 	<display-name>spring restful testing</display-name>
 
 	<filter>
-         <filter-name>HttpResponseLogger</filter-name>
-         <filter-class>test.spring.filter.HttpResponseLogger</filter-class>
+         <filter-name>HttpTrafficLogger</filter-name>
+         <filter-class>test.spring.filter.HttpTrafficLogger</filter-class>
     </filter>
     
     <filter-mapping>
-         <filter-name>HttpResponseLogger</filter-name>
+         <filter-name>HttpTrafficLogger</filter-name>
          <url-pattern>/persons/*</url-pattern>
     </filter-mapping>
 

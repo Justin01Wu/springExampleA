@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author justin.wu
  *
  */
-public class HttpResponseLogger implements Filter {
+public class HttpTrafficLogger implements Filter {
 
 	public void destroy() {
 	}
