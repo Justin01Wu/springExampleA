@@ -1,4 +1,4 @@
-package test.spring.service;
+package test.spring;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import test.spring.beans.User;
 import test.spring.exception.EntityNotFoundException;
+import test.spring.service.UserService;
 
 @Component  // traditional spring way to declare a bean
 //@Qualifier("myUserService")  // spring way to narrow down range of bean

@@ -45,6 +45,24 @@
 			<version>1.0</version>
 		</dependency>
 
+		<!-- needed for @Component, RestTemplate, ResponseEntity, ResponseEntity, HttpHeaders... -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+				
+		<!--  needed for runtime -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<!--  for DelegatingServletOutputStream in HttpLoggingFilter -->
 		<dependency>		
 			<groupId>org.springframework</groupId>
