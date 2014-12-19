@@ -60,6 +60,14 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+		<!--  even spring-beans is already inside spring-context, we still need define it here because our module directly use both -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+            <scope>runtime</scope>
         </dependency>		
         
 		<!--  needed for JdbcTemplate -->
@@ -68,7 +76,16 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
             <scope>compile</scope>
-        </dependency>        
+        </dependency>
+        
+        <!--  even spring-tx is already inside spring-jdbc, we still need define it here because our module directly use both -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+                
 				
   </dependencies>
   
