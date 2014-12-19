@@ -41,7 +41,7 @@
 
 		<dependency>
 			<groupId>test.spring</groupId>
-			<artifactId>beans</artifactId>
+			<artifactId>service</artifactId>
 			<version>1.0</version>
 		</dependency>
 
