@@ -52,23 +52,6 @@
 			<scope>compile</scope>
 			<type>jar</type>
 		</dependency>
-			
-		<!-- H2 database and driver for unit test -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.182</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<!-- JDBC driver for MS SQL SERVER for product -->
-		<dependency>
-			<groupId>net.sourceforge.jtds</groupId>
-			<artifactId>jtds</artifactId>
-			<version>1.2</version>
-			<scope>runtime</scope>			
-		</dependency>	
-
 
 
 	</dependencies>
