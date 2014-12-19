@@ -1,4 +1,4 @@
-package test.spring;
+package test.spring.filter;
 
 import java.io.IOException;
 import java.io.OutputStream;

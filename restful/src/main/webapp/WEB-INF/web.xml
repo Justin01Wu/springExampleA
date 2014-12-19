@@ -20,12 +20,12 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j
  <!-- 
  
  	<filter>
-    	<filter-name>loggingFilter</filter-name>
-    	<filter-class>test.spring.HttpLoggingFilter</filter-class>
+    	<filter-name>SpringHttpLoggingFilter</filter-name>
+    	<filter-class>test.spring.filter.SpringHttpLoggingFilter</filter-class>
 	</filter>
 
 	<filter-mapping>
-    	<filter-name>loggingFilter</filter-name>
+    	<filter-name>SpringHttpLoggingFilter</filter-name>
     	<url-pattern>/persons/*</url-pattern>
 	</filter-mapping>
   -->
