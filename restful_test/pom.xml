@@ -39,8 +39,9 @@
  
 		<dependency>
 			<groupId>test.spring</groupId>
-			<artifactId>beans</artifactId>
+			<artifactId>restful</artifactId>
 			<version>${my.version}</version>
+			<classifier>classes</classifier>
 		</dependency>
 
 	</dependencies>

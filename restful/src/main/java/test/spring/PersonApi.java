@@ -1,5 +1,6 @@
 package test.spring;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -21,9 +22,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import test.spring.beans.ErrorInfo;
 import test.spring.beans.Person;
+import test.spring.dto.PersonDTO;
+import test.spring.exception.EntityNotFoundException;
 import test.spring.exception.MethodNotFoundException;
 import test.spring.exception.PersonCantDeleteException;
-import test.spring.exception.EntityNotFoundException;
 import test.spring.service.PersonService;
 
 @Controller
@@ -45,8 +47,10 @@ public class PersonApi {
 	private PersonService personService;  
 	
 	@ResponseStatus(HttpStatus.CREATED)
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody Person createPerson(@Valid @RequestBody Person person){
+	@RequestMapping(method = RequestMethod.POST,
+	headers ={"Accept=application/json"},
+	produces={"application/json"})
+	public @ResponseBody PersonDTO createPerson(@Valid @RequestBody PersonDTO person){
 
 		id ++;
 		person.setId(id);
@@ -63,7 +67,7 @@ public class PersonApi {
 	method = RequestMethod.GET,
 	headers ={"Accept=application/json,application/xml"},
 	produces={"application/json", "application/xml"})
-	public @ResponseBody Person getPerson(@PathVariable("id") int id){
+	public @ResponseBody PersonDTO getPerson(@PathVariable("id") int id){
 		if(log.isDebugEnabled()){
 			log.debug("going to query person: " + id );
 		}
@@ -74,7 +78,7 @@ public class PersonApi {
 			}
 			throw new EntityNotFoundException("can't find person for : " + id);
 		}else{
-			return person;
+			return new PersonDTO(person);
 		}
 	}
 	
@@ -120,11 +124,20 @@ public class PersonApi {
 	method = RequestMethod.GET,
 	headers ={"Accept=application/json"},
 	produces={"application/json"})
-	public @ResponseBody Map<Integer, Person> getPersons(){
+	public @ResponseBody Map<Integer, PersonDTO> getPersons(){
 		if(log.isDebugEnabled()){
 			log.debug("going to get all persons" );
 		}
-		return personService.getAll();
+		Map<Integer, Person> people = personService.getAll();
+		
+		Map<Integer, PersonDTO> peopleDTO = new HashMap<Integer, PersonDTO>();
+		for(Integer key :people.keySet()){
+			Person person = people.get(key);
+			PersonDTO personDTO =  new PersonDTO(person);		
+			peopleDTO.put(key, personDTO);
+		}
+		
+		return peopleDTO;
 	}
 	
 	/**

@@ -67,13 +67,6 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.2.Final</version>
 		</dependency>
-
-		<!-- add jackson to support @JsonIgnore -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
 		
 		<!-- H2 database and driver for unit test -->
 		<dependency>

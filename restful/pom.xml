@@ -76,11 +76,26 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<!-- add jackson to support @JsonIgnore -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- for TeeOutputStream in HttpResponseLogger -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${log4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -102,6 +117,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
+    			<configuration>
+        			<attachClasses>true</attachClasses>
+        			<!-- This creates a classes artifact which you can use in the acceptance tests project (restful_test) -->
+    			</configuration>				
 			</plugin>
 
 			<!-- disable integration test because it is not ready 
