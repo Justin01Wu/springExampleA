@@ -27,7 +27,7 @@ import org.springframework.web.filter.GenericFilterBean;
  * @author justin.wu
  *
  */
-public class HttpLoggingFilter extends GenericFilterBean {
+public class SpringHttpLoggingFilter extends GenericFilterBean {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
