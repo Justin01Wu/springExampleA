@@ -44,13 +44,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- let spring support JSR330 @Inject -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-
 		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

@@ -30,6 +30,13 @@
 			<artifactId>beans</artifactId>
 			<version>1.0</version>
 		</dependency>
+		
+		<!-- let spring support JSR330 @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>		
 				
   </dependencies>
 </project>
