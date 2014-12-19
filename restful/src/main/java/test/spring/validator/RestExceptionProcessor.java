@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import test.spring.beans.ErrorInfo;
-import test.spring.beans.ValidationErrorDTO;
 import test.spring.exception.PersonCantDeleteException;
 import test.spring.exception.UserNameExistsException;
 

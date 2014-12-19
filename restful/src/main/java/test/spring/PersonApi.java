@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import test.spring.beans.ErrorInfo;
 import test.spring.beans.Person;
 import test.spring.dto.PersonDTO;
 import test.spring.exception.EntityNotFoundException;
 import test.spring.exception.MethodNotFoundException;
 import test.spring.exception.PersonCantDeleteException;
 import test.spring.service.PersonService;
+import test.spring.validator.ErrorInfo;
 
 @Controller
 @RequestMapping("/persons")

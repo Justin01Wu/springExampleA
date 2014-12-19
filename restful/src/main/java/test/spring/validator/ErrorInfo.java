@@ -1,4 +1,4 @@
-package test.spring.beans;
+package test.spring.validator;
 
 import javax.inject.Named;
 import javax.xml.bind.annotation.XmlRootElement;
