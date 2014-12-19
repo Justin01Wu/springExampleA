@@ -19,15 +19,6 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-		
-		
-		<!--  needed for JdbcTemplate -->
-		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
-            <scope>compile</scope>
-        </dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
