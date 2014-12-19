@@ -40,7 +40,7 @@ public class HttpTrafficLogger implements Filter {
 		}
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		
-		final StringBuilder logMessage = new StringBuilder("   ===>> HTTP Request - ");
+		final StringBuilder logMessage = new StringBuilder("\r\n  ==>> HTTP Request - ");
 		logMessage.append("[HTTP METHOD:").append(httpRequest.getMethod());
 		String fullURL = getFullURL(httpRequest);
 		logMessage.append("] [URL:").append(fullURL);
@@ -54,9 +54,9 @@ public class HttpTrafficLogger implements Filter {
 		chain.doFilter(requestWrapper, responseWrapper);
 		Object x = requestWrapper.getAttribute(TeeHttpServletRequest.LB_INPUT_BUFFER);
 		if(x instanceof byte[]){
-			System.out.println(" \r\n  ==> REQUEST body: " + new String((byte[])x));
+			System.out.println("\r\n  ==> REQUEST body: " + new String((byte[])x));
 		}
-		System.out.println(" \r\n  ==> RESPONSE STATUS: " + responseWrapper.getStatus());
+		System.out.println("  ==> RESPONSE STATUS: " + responseWrapper.getStatus() + "\r\n");
 	}
 	
 	public static String getFullURL(HttpServletRequest request) {
