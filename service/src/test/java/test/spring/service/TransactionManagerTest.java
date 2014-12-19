@@ -30,6 +30,11 @@ import test.spring.service.CustomerManagerImpl;
 @Component
 public class TransactionManagerTest {
 	
+	private static final String [] tables = {
+		    "CREATE TABLE Customer (id INTEGER NOT NULL PRIMARY KEY, name varchar(20))",
+		    "CREATE TABLE Address (id INTEGER NOT NULL PRIMARY KEY, address varchar(20), country varchar(20))"
+		};
+	
 	@Value( "${jdbc.url}" )
 	private String jdbcUrl;
 	
@@ -44,15 +49,18 @@ public class TransactionManagerTest {
         
         // connect to a in memory database, because of H2 feature, you don't need to install db sever or create db before do this 
         Connection con = DriverManager.getConnection("jdbc:h2:mem:mytest", "sa", "");  // mytest is database name
+        Statement statement = con.createStatement();
         
         // here you create the table
-        String createCustomer = "CREATE TABLE Customer (id INTEGER NOT NULL PRIMARY KEY, name varchar(20))";
-        Statement sst = con.createStatement();
-        sst.executeUpdate(createCustomer);
+        for (String query : tables) {
+            statement.addBatch(query);
+        }
+        statement.executeBatch();
+        statement.close();
         
-        String createAddress = "CREATE TABLE Address (id INTEGER NOT NULL PRIMARY KEY, address varchar(20), country varchar(20))";
-        sst = con.createStatement();
-        sst.executeUpdate(createAddress); 
+        // can't close connection, because it is in memory database, 
+        // if connection is closed, then all tables will disappear
+        //con.close();
 
 	}
 	
