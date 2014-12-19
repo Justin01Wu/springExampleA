@@ -19,15 +19,8 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${log4j.version}</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- Hibernate Validator -->
+		
+		<!-- Java Validator -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
