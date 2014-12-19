@@ -46,11 +46,13 @@
 
 		<!-- Hibernate Validator -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.1.2.Final</version>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+			<scope>compile</scope>
+			<type>jar</type>
 		</dependency>
-		
+			
 		<!-- H2 database and driver for unit test -->
 		<dependency>
 			<groupId>com.h2database</groupId>
