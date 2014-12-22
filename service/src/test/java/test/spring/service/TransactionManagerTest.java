@@ -42,6 +42,7 @@ public class TransactionManagerTest {
 	public static void prepareTables() throws ClassNotFoundException, SQLException{
 		
         Class.forName("org.h2.Driver");  // load the driver class
+        System.out.println(  "    ===>>>    loaded h2 jdbc driver " );
         
         // this one doesn't work for static method, TODO : fix it
         //System.out.println(  "    ===>>>    jdbcUrl= " + jdbcUrl);
@@ -56,7 +57,12 @@ public class TransactionManagerTest {
             statement.addBatch(query);
         }
         statement.executeBatch();
+        
+        con.commit();
+        System.out.println(  "    ===>>>    created tables" );
+        
         statement.close();
+        
         
         // can't close connection, because it is in memory database, 
         // if connection is closed, then all tables will disappear
