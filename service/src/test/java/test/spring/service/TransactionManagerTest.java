@@ -59,7 +59,7 @@ public class TransactionManagerTest {
         }
         statement.executeBatch();
         
-        con.commit();
+        con.commit();  // have to commit in case the following test cases can get tables.
         System.out.println(  "    ===>>>    created tables" );
         
         statement.close();
