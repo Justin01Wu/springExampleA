@@ -24,20 +24,6 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>		
-		
-		<!--  weird, without those 2  dependency, eclipse can pass UserValidatorTest, but maven will fail-->
-		<dependency>
-   			<groupId>javax.el</groupId>
-   			<artifactId>javax.el-api</artifactId>
-   			<version>2.2.4</version>
-   			<scope>test</scope>
-		</dependency>
-		<dependency>
-   			<groupId>org.glassfish.web</groupId>
-   			<artifactId>javax.el</artifactId>
-   			<version>2.2.4</version>
-   			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>test.spring</groupId>
