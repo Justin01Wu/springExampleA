@@ -54,6 +54,7 @@ public class TransactionManagerTest {
         
         // here you create the table
         for (String query : tables) {
+        	System.out.println(  "      ===>>>    " + query);
             statement.addBatch(query);
         }
         statement.executeBatch();
