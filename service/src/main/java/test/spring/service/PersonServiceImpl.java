@@ -20,6 +20,7 @@ import test.spring.exception.UserNameExistsException;
 
 public class PersonServiceImpl implements PersonService {
 	
+	private static int id = 200;	
 	private Map<Integer, Person> idPersonMap = new HashMap<Integer, Person>();
 	
 	private Set<String> allNames = new HashSet<String>();
@@ -39,10 +40,14 @@ public class PersonServiceImpl implements PersonService {
 	}	
 	
 	@Override
-	public synchronized void savePerson(Person person){
+	public synchronized void savePerson(Person person){		
+
 		if(allNames.contains(person.getName())){
 			throw new UserNameExistsException("user name exists: " + person.getName(), "name");
 		}
+		id ++;
+		person.setId(id);
+		
 		idPersonMap.put(person.getId(), person);
 		allNames.add(person.getName());
 	}

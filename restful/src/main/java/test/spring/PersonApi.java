@@ -52,10 +52,8 @@ public class PersonApi {
 	produces={"application/json"})
 	public @ResponseBody PersonDTO createPerson(@Valid @RequestBody PersonDTO person){
 
-		id ++;
-		person.setId(id);
 		if(log.isDebugEnabled()){
-			log.debug("going to save a new person: " + person.getId() + ", " + person.getName());
+			log.debug("going to save a new person: " + person.getName());
 		}
 		personService.savePerson(person);
 		return person;
