@@ -26,7 +26,7 @@ public class PersonServiceImpl implements PersonService {
 	private Set<String> allNames = new HashSet<String>();
 	
 	public PersonServiceImpl(){
-		Person person = new Person(99, "sample Person", "abcD1234");
+		Person person = new Person(99, "samplePerson", "abcD1234");
 		person.setBirth(new Date());
 		person.addEmails("wuyg719@gmail.com");
 		person.addEmails("justin1.wu@gmail.com");

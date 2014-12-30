@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import test.spring.exception.PersonCantDeleteException;
 import test.spring.exception.UserNameExistsException;
+import test.spring.exception.WriteReadOnlyPropertyException;
 
 /**
  * general exception handler for all controller, it is using @ControllerAdvice, which start from Spring 3.2
@@ -108,6 +109,23 @@ public class RestExceptionProcessor {
  
         return dto;
     }
+
+    @ExceptionHandler(WriteReadOnlyPropertyException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ValidationErrorDTO processReadOnlyError(WriteReadOnlyPropertyException ex) {
+    	
+    	ValidationErrorDTO dto = new ValidationErrorDTO();
+		if(log.isDebugEnabled()){
+			log.debug("going to handle WriteReadOnlyPropertyException " );
+		}
+		 dto.setGeneralMsg("some fields are readOnly, can't be changed, please see API docs for details");
+ 
+        return dto;
+    }
+
+    
+    
     
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
