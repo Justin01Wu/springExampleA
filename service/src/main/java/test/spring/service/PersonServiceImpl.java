@@ -38,6 +38,7 @@ public class PersonServiceImpl implements PersonService {
 		System.out.println("             ==> testPostConstruct in PersonServiceImpl...");		
 	}	
 	
+	@Override
 	public synchronized void savePerson(Person person){
 		if(allNames.contains(person.getName())){
 			throw new UserNameExistsException("user name exists: " + person.getName(), "name");
@@ -46,6 +47,20 @@ public class PersonServiceImpl implements PersonService {
 		allNames.add(person.getName());
 	}
 	
+	@Override
+	public synchronized void updatePerson(Person person){
+		Person oldPerson = getPerson(person.getId());
+		if(oldPerson == null){
+			throw new RuntimeException("old person is not found");
+		}
+		idPersonMap.remove(oldPerson);
+		allNames.remove(oldPerson.getName());
+		
+		idPersonMap.put(person.getId(), person);
+		allNames.add(person.getName());
+	}
+	
+	@Override
 	public synchronized void deletePerson(int id){
 		
 		Person person = idPersonMap.get(id);
@@ -56,10 +71,12 @@ public class PersonServiceImpl implements PersonService {
 		allNames.remove(person.getName());
 	}
 	
+	@Override
 	public synchronized Person getPerson(int id){
 		return idPersonMap.get(id);
 	}
 	
+	@Override
 	public Map<Integer, Person> getAll(){
 		return idPersonMap;
 	}

@@ -140,6 +140,26 @@ public class PersonApi {
 		return peopleDTO;
 	}
 	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT,
+	headers ={"Accept=application/json"},
+	produces={"application/json"})
+	public @ResponseBody PersonDTO updatePerson(@PathVariable("id") int id, @Valid @RequestBody PersonDTO person){
+
+		if(person.getId() == null ){
+			throw new RuntimeException("person id can't be null");
+		}
+		if(person.getId() != id ){
+			throw new RuntimeException("person id didn't match path id");
+		}
+		
+		if(log.isDebugEnabled()){
+			log.debug("going to update a person: " + person.getId() + ", " + person.getName());
+		}
+		personService.updatePerson(person);
+		return person;
+	}	
+	
 	/**
 	 * @RequestMapping fallback method: 
 	 * We can create a fallback method for the controller class 
