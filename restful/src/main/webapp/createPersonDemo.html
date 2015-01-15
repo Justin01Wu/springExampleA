@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>data Validation</title>
+</head>
+<body>
+
+
+	<h1>This is a demo web app to show you how to validate data</h1>
+	<ul>
+		<li>Web UI send data to the back end on Restful API</li>
+		<li>The validation happens to the back end</li>
+		<li>If validation fails, back end return 400 error with fields
+			related description</li>
+		<li>And Web UI will apply those errors desc to UI fields</li>
+	</ul>
+
+
+	<h1>Design notes</h1>
+	<ul>
+		<li>Validator is on JSR 303</li>
+		<li>UI is on EmberJS</li>
+		<li>Restful API is on JSR330 and Spring</li>
+		<li>To make it simple, I didn't implement i18n</li>
+
+	</ul>
+	<br />
+	<br />
+
+	<a href="createPerson.html">create a person </a>
+
+	<h2>Created by Justin Wu</h2>
+
+</body>
+</html>
