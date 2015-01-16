@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/bootstrap.css">
-<title>Demo how RESTful API set readOnly property </title>
+<title>Demo how RESTful API set readOnly property</title>
 </head>
 <body>
-<h3> Demo how RESTful API set readOnly property </h3>
+	<h3>Demo how RESTful API set readOnly property</h3>
 
-  <div id="topContainer" >
-  <div id="leftContainer" class="col-md-5">
-  Wrong Request(because it changed readonly properties):<br/>
-    <textarea id = "wrongJson" style="width: 300px; height: 300px;" readonly="readonly">
+	<div id="topContainer">
+		<div id="leftContainer" class="col-md-5">
+			Wrong Request(because it changed readonly properties):<br />
+			<textarea id="wrongJson" style="width: 300px; height: 300px;"
+				readonly="readonly">
   
   {
   "id": 99,
@@ -26,27 +27,30 @@
   "password": "abcD1234"
 }
   </textarea>
-  
-  </div>
-  
-  <div id="middleContainer" class="col-md-2">
-  	<button class="btn btn-primary btn-block" type="submit" onclick="submitAjax('wrongJson');">Submit</button>
-  </div>
-  
-  <div id="rightContainer" class="col-md-5">
-  Respond:<br/>
-    <textarea id = "response" style="width: 300px; height: 300px;" readonly="readonly">
-    </textarea>
-  </div>
-      
 
-    
-  </div>
-  
-  <div id="bottomContainer" >
-  <div class="col-md-5">
-  Correct  Request:<br/>
-    <textarea id = "correctJson" style="width: 300px; height: 300px;" readonly="readonly">
+		</div>
+
+		<div id="middleContainer" class="col-md-2">
+			<button class="btn btn-primary btn-block" type="submit"
+				onclick="submitAjax('wrongJson');">Submit</button>
+		</div>
+
+		<div id="rightContainer" class="col-md-5">
+			Respond:<br />
+			<textarea id="response" style="width: 300px; height: 300px;"
+				readonly="readonly">
+    </textarea>
+		</div>
+
+
+
+	</div>
+
+	<div id="bottomContainer">
+		<div class="col-md-5">
+			Correct Request:<br />
+			<textarea id="correctJson" style="width: 300px; height: 300px;"
+				readonly="readonly">
   
 {
   "id": 99,
@@ -61,20 +65,21 @@
   "password": "abcD7890"
 }
   </textarea>
-  
-  </div>
-  
-  <div class="col-md-2">
-  	<button class="btn btn-primary btn-block" type="submit" onclick="submitAjax('correctJson');">Submit</button>
-  </div>
-  
-     
 
-    
-  </div>
+		</div>
 
-  <script src="resources/lib/jquery.1.10.2.min.js"></script>
-  <script src="resources/readOnly.js"></script>
+		<div class="col-md-2">
+			<button class="btn btn-primary btn-block" type="submit"
+				onclick="submitAjax('correctJson');">Submit</button>
+		</div>
+
+
+
+
+	</div>
+
+	<script src="resources/lib/jquery.1.10.2.min.js"></script>
+	<script src="resources/readOnly.js"></script>
 
 </body>
 </html>
