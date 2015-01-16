@@ -1,9 +1,9 @@
 
-function submitAjax(){
+function submitAjax(dataAreaId){
 	console.log("submitAjax...");
 	
 	
-	var data = $("textarea#wrongJson")[0].value;
+	var data = $("textarea#"+ dataAreaId)[0].value;
 	console.log(data);
 	
 	

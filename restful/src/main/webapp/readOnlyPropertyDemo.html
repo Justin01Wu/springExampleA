@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/bootstrap.css">
-<title>demo how RESTful API set readOnly property </title>
+<title>Demo how RESTful API set readOnly property </title>
 </head>
 <body>
-<h3> demo how RESTful API set readOnly property </h3>
+<h3> Demo how RESTful API set readOnly property </h3>
 
   <div id="topContainer" >
   <div id="leftContainer" class="col-md-5">
-  Request:<br/>
+  Wrong Request(because it changed readonly properties):<br/>
     <textarea id = "wrongJson" style="width: 300px; height: 300px;" readonly="readonly">
   
   {
@@ -30,7 +30,7 @@
   </div>
   
   <div id="middleContainer" class="col-md-2">
-  	<button class="btn btn-primary btn-block" type="submit" onclick="submitAjax();">Submit</button>
+  	<button class="btn btn-primary btn-block" type="submit" onclick="submitAjax('wrongJson');">Submit</button>
   </div>
   
   <div id="rightContainer" class="col-md-5">
@@ -39,6 +39,36 @@
     </textarea>
   </div>
       
+
+    
+  </div>
+  
+  <div id="bottomContainer" >
+  <div class="col-md-5">
+  Correct  Request:<br/>
+    <textarea id = "correctJson" style="width: 300px; height: 300px;" readonly="readonly">
+  
+{
+  "id": 99,
+  "name": "samplePerson",
+  "birth": 1419977794465,
+  "emails": [
+    "wuyg719@Hotmail.com",
+    "justin01.wu@gmail.com"
+  ],
+  "version": 0,
+  "hash": 929969413,
+  "password": "abcD7890"
+}
+  </textarea>
+  
+  </div>
+  
+  <div class="col-md-2">
+  	<button class="btn btn-primary btn-block" type="submit" onclick="submitAjax('correctJson');">Submit</button>
+  </div>
+  
+     
 
     
   </div>
