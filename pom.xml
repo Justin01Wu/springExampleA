@@ -13,6 +13,7 @@
 		<module>parent</module>
         <module>beans</module>
 		<module>service</module>
+		<module>shardedUi</module>	
         <module>restful</module>
 		<module>restful_test</module>
 		<!--
