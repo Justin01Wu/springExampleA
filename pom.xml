@@ -16,10 +16,10 @@
 		<module>shardedUi</module>	
         <module>restful</module>
 		<module>restful_test</module>
-		<!--
+		
 		<module>security</module>
 		<module>SpringAOPExample</module>
-		-->
+		
     </modules>
 	
 	
