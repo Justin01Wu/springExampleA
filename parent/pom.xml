@@ -18,7 +18,7 @@
 		<spring.version>4.2.1.RELEASE</spring.version>
 		
 		<!-- <spring.security.version>3.2.3.RELEASE</spring.security.version>   -->
-		<spring.security.version>3.2.10.RELEASE</spring.security.version>
+		<spring.security.version>4.2.14.RELEASE</spring.security.version>
 		
 		<my.version>1.0</my.version>
 		<log4j.version>1.7.5</log4j.version>		
