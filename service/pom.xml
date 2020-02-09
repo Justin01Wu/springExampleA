@@ -83,7 +83,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
-            <scope>runtime</scope>
+            <scope>compile</scope>
         </dependency>		
         
 		<!--  needed for JdbcTemplate -->
@@ -103,12 +103,21 @@
         </dependency>
 
 		<!-- Hibernate Validator, it is needed for JSR303 -->
+		<!--
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.2.Final</version>
 			<scope>runtime</scope>
-		</dependency>                    
+		</dependency>  
+		-->
+
+		<dependency>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator</artifactId>
+		  <version>5.4.1.Final</version>
+		  <scope>runtime</scope>
+		</dependency>		
 				
   </dependencies>
   
