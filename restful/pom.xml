@@ -1,19 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>test.spring</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0</version>
 		<relativePath>../parent/pom.xml</relativePath>
 	</parent>
-	
+
 	<artifactId>restful</artifactId>
 	<packaging>war</packaging>
-	<name>restful Webapp</name>	
-	
-	<properties>		
+	<name>restful Webapp</name>
+
+	<properties>
 		<jstl.version>1.2</jstl.version>
 	</properties>
 
@@ -23,7 +24,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 
 		<dependency>
 			<groupId>test.spring</groupId>
@@ -31,7 +32,21 @@
 			<version>1.0</version>
 		</dependency>
 
-		<!-- needed for @Component, RestTemplate, ResponseEntity, ResponseEntity, HttpHeaders... -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<!-- Implementation Runtime (Required for execution) -->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<!-- needed for @Component, RestTemplate, ResponseEntity,
+		ResponseEntity, HttpHeaders... -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -39,7 +54,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-				
+
 		<!--  needed for runtime -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -48,23 +63,23 @@
 			<type>jar</type>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!--  for DelegatingServletOutputStream in HttpLoggingFilter -->
-		<dependency>		
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
 			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -72,14 +87,14 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- add jackson to support @JsonIgnore -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -95,14 +110,14 @@
 			<version>2.4</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${log4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -110,8 +125,8 @@
 			<version>5.3.5.Final</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-		<!-- this idea comes from  
+
+		<!-- this idea comes from
 		http://stackoverflow.com/questions/4956245/how-to-manage-shared-resources-for-several-web-apps-in-maven-and-eclipse
 		it will include all UI code from another war file 
 		-->
@@ -120,7 +135,7 @@
 			<artifactId>shared-ui</artifactId>
 			<version>1.0</version>
 			<type>war</type>
-		</dependency>		
+		</dependency>
 
 	</dependencies>
 
@@ -139,11 +154,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-    			<configuration>
-        			<attachClasses>true</attachClasses>
-        			<!-- This creates a classes artifact which you can use in the acceptance tests project (restful_test) -->
-    			</configuration>				
+				<version>3.4.0</version>
+				<configuration>
+					<attachClasses>true</attachClasses>
+					<!-- This creates a classes artifact which you can use in
+					the acceptance tests project (restful_test) -->
+				</configuration>
 			</plugin>
 
 			<!-- disable integration test because it is not ready 
